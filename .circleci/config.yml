@@ -1,0 +1,53 @@
+
+version: 2.1
+
+workflows:
+  build:
+    jobs:
+      - build
+jobs:
+    build:
+        working_directory: ~/circleci-starter
+        docker:
+            - image: cimg/base:2022.09
+            - image: cimg/node:14.15.0 # Primary execution image
+        steps:
+            - checkout
+            - setup_remote_docker:
+                version: 20.10.14
+            - run:
+                name: build
+                command: |
+                    # Build
+                      echo '_____________beginning build'
+                      docker build -t udagram-api-feed:v3 ./udagram-api-feed
+                      docker build -t udagram-api-user:v3 ./udagram-api-user
+                      docker build -t udagram-frontend:v3 ./udagram-frontend
+                      docker build -t reverseproxy:v3 ./udagram-reverseproxy  
+
+                      # Tagging
+                      echo '_____________beginning tag'
+                      docker tag udagram-api-feed:v3 trungle94/udagram-api-feed:v3
+                      docker tag udagram-api-user:v3 trungle94/udagram-api-user:v3
+                      docker tag udagram-frontend:v3 trungle94/udagram-frontend:v3
+                      docker tag reverseproxy:v3 trungle94/reverseproxy:v3
+
+                      echo 'DOCKER IMAGE LS____'
+                      docker image ls
+
+            - run:
+                name: after_success
+                command: |
+                    # Assuming DOCKER_PASSWORD and DOCKER_USERNAME are set in the Travis repository settings
+                    # Login Docker  
+                    echo '________LOGIN_______'
+                    #- docker login -u=trungle94 -p=xxxxxx
+                    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+                    #- echo 'username, password'  $DOCKER_USERNAME $DOCKER_PASSWORD
+                    # Pushing 
+                    echo '_____________beginning push image'
+                    docker push trungle94/udagram-api-feed:v3
+                    docker push trungle94/udagram-api-user:v3
+                    docker push trungle94/udagram-frontend:v3
+                    docker push trungle94/reverseproxy:v3
+          
