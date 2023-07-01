@@ -27,10 +27,10 @@ jobs:
 
                       # Tagging
                       echo '_____________beginning tag'
-                      docker tag udagram-api-feed:v3 trungle94/udagram-api-feed:v3
-                      docker tag udagram-api-user:v3 trungle94/udagram-api-user:v3
-                      docker tag udagram-frontend:v3 trungle94/udagram-frontend:v3
-                      docker tag reverseproxy:v3 trungle94/reverseproxy:v3
+                      docker tag udagram-api-feed:v3 thoapk1/udagram-api-feed:v3
+                      docker tag udagram-api-user:v3 thoapk1/udagram-api-user:v3
+                      docker tag udagram-frontend:v3 thoapk1/udagram-frontend:v3
+                      docker tag reverseproxy:v3 thoapk1/reverseproxy:v3
 
                       echo 'DOCKER IMAGE LS____'
                       docker image ls
@@ -41,13 +41,13 @@ jobs:
                     # Assuming DOCKER_PASSWORD and DOCKER_USERNAME are set in the Travis repository settings
                     # Login Docker  
                     echo '________LOGIN_______'
-                    #- docker login -u=trungle94 -p=xxxxxx
+                    #- docker login -u=thoapk1 -p=xxxxxx
                     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
                     #- echo 'username, password'  $DOCKER_USERNAME $DOCKER_PASSWORD
                     # Pushing 
                     echo '_____________beginning push image'
-                    docker push trungle94/udagram-api-feed:v3
-                    docker push trungle94/udagram-api-user:v3
-                    docker push trungle94/udagram-frontend:v3
-                    docker push trungle94/reverseproxy:v3
+                    docker push thoapk1/udagram-api-feed:v3
+                    docker push thoapk1/udagram-api-user:v3
+                    docker push thoapk1/udagram-frontend:v3
+                    docker push thoapk1/reverseproxy:v3
           
