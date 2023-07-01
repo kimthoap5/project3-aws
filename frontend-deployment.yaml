@@ -16,7 +16,7 @@ spec:
     spec:      
       containers:
       - name: frontend
-        image: thoapk1/udagram-frontend:v3
+        image: thoapk1/udagram-frontend:v1
         imagePullPolicy: Always        
         resources:
           limits:
