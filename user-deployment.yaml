@@ -1,0 +1,32 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: api-user
+  labels: 
+    app: api-user
+spec: 
+  replicas: 2
+  selector: 
+    matchLabels: 
+      app: api-user
+  template: 
+    metadata: 
+      labels: 
+        app: api-user
+    spec: 
+      containers: 
+        - name: api-user
+          image: thoapk1/udagram-api-user:v3
+          imagePullPolicy: Always
+          resources:
+            requests:            
+              cpu: 250m
+            limits:            
+              cpu: 500m
+          envFrom:
+            - secretRef:
+                name: env-secret
+            - configMapRef:
+                name: config-secret
+          ports: 
+            - containerPort: 8080
