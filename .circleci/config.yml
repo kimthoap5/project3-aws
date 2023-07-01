@@ -20,11 +20,11 @@ jobs:
                 command: |
                     # Build
                       echo '_____________beginning build'
-                      docker build -t udagram-frontend:v5 ./udagram-frontend
+                      docker build -t udagram-frontend:v6 ./udagram-frontend
 
                       # Tagging
                       echo '_____________beginning tag'
-                      docker tag udagram-frontend:v5 thoapk1/udagram-frontend:v5
+                      docker tag udagram-frontend:v6 thoapk1/udagram-frontend:v6
 
                       echo 'DOCKER IMAGE LS____'
                       docker image ls
@@ -40,5 +40,5 @@ jobs:
                     #- echo 'username, password'  $DOCKER_USERNAME $DOCKER_PASSWORD
                     # Pushing 
                     echo '_____________beginning push image'
-                    docker push thoapk1/udagram-frontend:v5
+                    docker push thoapk1/udagram-frontend:v6
           
