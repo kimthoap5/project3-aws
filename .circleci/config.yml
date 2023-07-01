@@ -20,17 +20,11 @@ jobs:
                 command: |
                     # Build
                       echo '_____________beginning build'
-                      docker build -t udagram-api-feed:v1 ./udagram-api-feed
-                      docker build -t udagram-api-user:v1 ./udagram-api-user
-                      docker build -t udagram-frontend:v1 ./udagram-frontend
-                      docker build -t reverseproxy:v1 ./udagram-reverseproxy  
+                      docker build -t udagram-frontend:v5 ./udagram-frontend
 
                       # Tagging
                       echo '_____________beginning tag'
-                      docker tag udagram-api-feed:v1 thoapk1/udagram-api-feed:v1
-                      docker tag udagram-api-user:v1 thoapk1/udagram-api-user:v1
-                      docker tag udagram-frontend:v1 thoapk1/udagram-frontend:v1
-                      docker tag reverseproxy:v1 thoapk1/reverseproxy:v1
+                      docker tag udagram-frontend:v5 thoapk1/udagram-frontend:v5
 
                       echo 'DOCKER IMAGE LS____'
                       docker image ls
@@ -46,8 +40,5 @@ jobs:
                     #- echo 'username, password'  $DOCKER_USERNAME $DOCKER_PASSWORD
                     # Pushing 
                     echo '_____________beginning push image'
-                    docker push thoapk1/udagram-api-feed:v1
-                    docker push thoapk1/udagram-api-user:v1
-                    docker push thoapk1/udagram-frontend:v1
-                    docker push thoapk1/reverseproxy:v1
+                    docker push thoapk1/udagram-frontend:v5
           
