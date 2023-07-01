@@ -16,7 +16,7 @@ spec:
     spec: 
       containers: 
         - name: api-user
-          image: thoapk1/udagram-api-user:v3
+          image: thoapk1/udagram-api-user:v1
           imagePullPolicy: Always
           resources:
             requests:            

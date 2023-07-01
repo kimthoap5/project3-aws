@@ -21,7 +21,7 @@ kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreversep
 
 kubectl expose deployment frontend --type=LoadBalancer --name=publicfrontend
 
-kubectl set image deployment frontend frontend=thoapk1/udagram-frontend:v3
+kubectl set image deployment frontend frontend=thoapk1/udagram-frontend:v1
 
 kubectl rollout restart deployment/api-feed          
 
